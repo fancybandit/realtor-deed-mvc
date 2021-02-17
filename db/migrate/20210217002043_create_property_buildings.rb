@@ -1,6 +1,6 @@
-class CreatePropertybuildings < ActiveRecord::Migration[5.2]
+class CreatePropertyBuildings < ActiveRecord::Migration[5.2]
   def change
-    create_table :propertybuildings do |t|
+    create_table :property_buildings do |t|
       t.references :property
       t.references :building
 

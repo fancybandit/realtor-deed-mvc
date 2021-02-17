@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 2021_02_17_002043) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "propertybuildings", force: :cascade do |t|
+  create_table "property_buildings", force: :cascade do |t|
     t.integer "property_id"
     t.integer "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["building_id"], name: "index_propertybuildings_on_building_id"
-    t.index ["property_id"], name: "index_propertybuildings_on_property_id"
+    t.index ["building_id"], name: "index_property_buildings_on_building_id"
+    t.index ["property_id"], name: "index_property_buildings_on_property_id"
   end
 
   create_table "users", force: :cascade do |t|
