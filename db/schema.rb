@@ -13,12 +13,10 @@
 ActiveRecord::Schema.define(version: 2021_02_17_002043) do
 
   create_table "buildings", force: :cascade do |t|
-    t.integer "property_id"
     t.integer "year_built"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["property_id"], name: "index_buildings_on_property_id"
   end
 
   create_table "deeds", force: :cascade do |t|
