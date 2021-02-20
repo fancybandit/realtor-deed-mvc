@@ -13,7 +13,14 @@ class SessionsController < ApplicationController
 
   # POST: /sessions
   post "/login" do
-    binding.pry
+    user = User.find_by_email(params[:user][:email])
+    if user && user.authenticate(params[:user][:password])
+      flash[:success] = "Successfully logged in"
+      redirect "/properties"
+    else
+      flash[:error] = "Invalid credentials"
+      redirect "/login"
+    end
   end
 
   # GET: /sessions/5
