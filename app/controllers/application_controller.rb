@@ -14,6 +14,10 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  error Sinatra::NotFound do
+    erb :"error.html"
+  end
+
   helpers do
 
     def current_user
@@ -29,7 +33,7 @@ class ApplicationController < Sinatra::Base
         redirect "/login"
       end
     end
-    
+
   end
 
 end
