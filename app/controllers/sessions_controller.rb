@@ -6,8 +6,9 @@ class SessionsController < ApplicationController
   end
 
   # GET: /sessions/new
-  get "/sessions/new" do
-    erb :"/sessions/new.html"
+  get "/logout" do
+    session.clear
+    redirect "/"
   end
 
   # POST: /sessions
