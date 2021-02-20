@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
   post "/login" do
     user = User.find_by_email(params[:user][:email])
     if user && user.authenticate(params[:user][:password])
+      session[:user_id] = user.id
       flash[:success] = "Successfully logged in"
       redirect "/properties"
     else
