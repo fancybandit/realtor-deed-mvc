@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
 
   # GET: /sessions
-  get "/sessions" do
-    erb :"/sessions/index.html"
+  get "/login" do
+    erb :"/sessions/login.html"
   end
 
   # GET: /sessions/new
@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
   end
 
   # POST: /sessions
-  post "/sessions" do
-    redirect "/sessions"
+  post "/login" do
+    binding.pry
   end
 
   # GET: /sessions/5
