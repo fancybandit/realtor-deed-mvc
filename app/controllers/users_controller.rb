@@ -12,7 +12,13 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/signup" do
-    # redirect "/users"
+    user = User.create(params[:user])
+    if user.valid?
+      session[:user_id] = user.id
+      redirect "/users" #ACKNOWLEDGE
+    else
+      redirect "/signup"
+    end
   end
 
   # GET: /users/5
