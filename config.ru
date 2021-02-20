@@ -6,4 +6,5 @@ end
 
 use UsersController
 run ApplicationController
+use PropertiesController
 use SessionsController
