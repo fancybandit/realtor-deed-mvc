@@ -14,9 +14,11 @@ class UsersController < ApplicationController
   post "/signup" do
     user = User.create(params[:user])
     if user.valid?
+      flash[:success] = "Successfully signed-in new user"
       session[:user_id] = user.id
       redirect "/users" #ACKNOWLEDGE
     else
+      flash[:error] = user.errors.full_messages.first
       redirect "/signup"
     end
   end
