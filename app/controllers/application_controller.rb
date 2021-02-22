@@ -1,4 +1,4 @@
-require './config/environment'
+require './config/environment' #QUESTION IF NECESSARY
 
 class ApplicationController < Sinatra::Base
 
@@ -33,15 +33,13 @@ class ApplicationController < Sinatra::Base
     end
 
     def redirect_if_not_logged_in
-      if !logged_in?
-        redirect "/login"
-      end
+        redirect "/login" if !logged_in?
     end
 
     def not_owner?(obj)
       if current_user != obj.user
         flash[:error] = "You don't have permission to view this page!"
-        redirect "properties"
+        redirect "/properties"
       end
     end
 
