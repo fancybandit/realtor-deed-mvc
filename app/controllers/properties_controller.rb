@@ -6,6 +6,7 @@ class PropertiesController < ApplicationController
 
   # GET: /properties
   get "/properties" do
+    @properties = current_user.properties
     erb :"/properties/index.html"
   end
 
@@ -21,16 +22,22 @@ class PropertiesController < ApplicationController
 
   # GET: /properties/5
   get "/properties/:id" do
+    find_property #CREATE BEFORE
     erb :"/properties/show.html"
   end
 
   # GET: /properties/5/edit
   get "/properties/:id/edit" do
+    find_property
+    not_owner?(@property)
     erb :"/properties/edit.html"
   end
 
   # PATCH: /properties/5
   patch "/properties/:id" do
+    find_property
+    not_owner?(@property)
+    
     redirect "/properties/:id"
   end
 
@@ -38,4 +45,11 @@ class PropertiesController < ApplicationController
   delete "/properties/:id/delete" do
     redirect "/properties"
   end
+
+  private
+
+  def find_property
+    @property = Property.find_by(params[:id])
+  end
+
 end

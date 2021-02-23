@@ -1,5 +1,4 @@
-require './config/environment' #QUESTION IF NECESSARY
-
+ #QUESTION IF NECESSARY
 class ApplicationController < Sinatra::Base
 
   configure do

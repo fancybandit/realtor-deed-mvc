@@ -1,3 +1,7 @@
 <h1>Property Homepage</h1>
-
+<ul>
+<% @properties.each do |property| %>
+    <li><a href="/properties/<%= property.id %>"><%= property.address %></a></li><br>
+<% end %>
+</ul>
 <a href="/logout" class="btn btn-success">Logout</a>
