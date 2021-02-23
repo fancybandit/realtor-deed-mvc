@@ -15,6 +15,7 @@ group :development do
   gem 'sqlite3', '~> 1.3.6'
   gem 'pry'
   gem 'tux'
+  gem 'faker'
 end
 
 group :test do
