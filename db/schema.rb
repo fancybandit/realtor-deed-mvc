@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_154052) do
 
   create_table "buildings", force: :cascade do |t|
     t.integer "year_built"
-    t.float "price", default: 0.0
+    t.integer "price", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_154052) do
 
   create_table "properties", force: :cascade do |t|
     t.string "address"
-    t.float "price", default: 0.0
+    t.integer "price", default: 0
     t.integer "year_sold"
     t.float "acreage"
     t.datetime "created_at", null: false
