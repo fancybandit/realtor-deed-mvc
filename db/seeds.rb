@@ -21,7 +21,7 @@ User.all.each do |user|
 end
 
 # Create 1 Building per Property
-Properties.all.each do |property|
+Property.all.each do |property|
     year_built = Faker::Number.between(from: 1911, to: Date.current.year)
     price = Faker::Number.between(from: 1000, to: 12000000)
 
