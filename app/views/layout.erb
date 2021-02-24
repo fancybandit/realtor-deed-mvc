@@ -15,6 +15,12 @@
   </head>
   <body>
     <div class="wrapper">
+      
+      <% if flash[:error] %>
+        <div class="errors flash fatal">
+          <h4 class="error"><%= flash[:error] %></h4>
+        </div>
+      <% end %>
 
         <%= yield %>
 
