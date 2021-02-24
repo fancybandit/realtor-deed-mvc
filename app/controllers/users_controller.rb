@@ -7,7 +7,11 @@ class UsersController < ApplicationController
 
   # GET: /users/new
   get "/signup" do
-    erb :"/users/new.html"
+    if logged_in?
+      redirect "/users/#{current_user.slug}"
+    else
+      erb :"/users/new.html"
+    end
   end
 
   # POST: /users
@@ -16,7 +20,7 @@ class UsersController < ApplicationController
     if user.valid?
       session[:user_id] = user.id
       flash[:success] = "Successfully signed-in new user"
-      redirect "/users" #ACKNOWLEDGE
+      redirect "/users/#{current_user.slug}"
     else
       flash[:error] = user.errors.full_messages.first
       redirect "/signup"
