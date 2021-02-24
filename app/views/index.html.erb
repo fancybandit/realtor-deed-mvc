@@ -1,11 +1,9 @@
+<h1>Realtor-Deed MVC</h1>
+<h2>Your "home" for managing your homes!</h2>
 <% if !logged_in? %>
-    <h1>Realtor-Deed MVC</h1>
-    <h2>Your "home" for managing your homes!</h2>
     <a href="/login"><h2>Login</h2></a>
     <a href="/signup"><h2>Signup</h2></a>
 <% else %>
-    <h1>Realtor-Deed MVC</h1>
-    <h2>Your "home" for managing your homes!</h2>
-    <a href="/properties"><h2>Explore Properties</h2></a>
+    <a href="/properties"><h2>Discover Properties</h2></a>
     <a href="/properties"><h2>Your Properties</h2></a>
 <% end %>
