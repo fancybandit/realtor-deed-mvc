@@ -29,15 +29,15 @@ class PropertiesController < ApplicationController
   # GET: /properties/5/edit
   get "/properties/:id/edit" do
     find_property
-    not_owner?(@property)
+    is_owner_of?(@property)
     erb :"/properties/edit.html"
   end
 
   # PATCH: /properties/5
   patch "/properties/:id" do
     find_property
-    not_owner?(@property)
-    
+    is_owner_of?(@property)
+
     redirect "/properties/:id"
   end
 

@@ -35,7 +35,7 @@ class ApplicationController < Sinatra::Base
         redirect "/login" if !logged_in?
     end
 
-    def not_owner?(obj)
+    def is_owner_of?(obj)
       if current_user != obj.user
         flash[:error] = "You don't have permission to view this page!"
         redirect "/properties"
