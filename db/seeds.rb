@@ -27,3 +27,8 @@ Property.all.each do |property|
 
     property.buildings.create(year_built: year_built, price: price)
 end
+
+# Fill in extra data for each deed
+Deed.all.each do |deed|
+    deed.update(owner_name: deed.owner.name, date_signed: "2020-01-31")
+end
