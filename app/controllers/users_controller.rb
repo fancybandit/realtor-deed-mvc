@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Unable to find the user you requested"
       redirect "/users"
+    end
   end
 
   # GET: /users/new

@@ -1,1 +1,14 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%= @user.name %></h1>
+<p>Member since: <%= @user.created_at.try(:to_date) %></p>
+<br>
+<h2>Properties:</h2>
+    <ul>
+        <% @user.properties.each do |property| %>
+            <li>
+                <a href="/properties/<%= property.id %>"><%= property.address %></a>
+                <h5>View deed:</h5><a href="/deeds/<%= property.deed.id %>"><%= property.deed.date_signed %></a>
+                <br><br><br>
+            </li>
+        <% end %>
+    </ul>
+
