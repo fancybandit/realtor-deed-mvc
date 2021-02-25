@@ -5,6 +5,16 @@ class UsersController < ApplicationController
     erb :"/users/index.html"
   end
 
+  # GET: /users/5
+  get "/users/:slug" do
+    @user = User.find_by_slug(params[:slug])
+    if @user
+      erb :"/users/show.html"
+    else
+      flash[:error] = "Unable to find the user you requested"
+      redirect "/users"
+  end
+
   # GET: /users/new
   get "/signup" do
     if logged_in?
@@ -25,11 +35,6 @@ class UsersController < ApplicationController
       flash[:error] = user.errors.full_messages.first
       redirect "/signup"
     end
-  end
-
-  # GET: /users/5
-  get "/users/:id" do
-    erb :"/users/show.html"
   end
 
   # GET: /users/5/edit
