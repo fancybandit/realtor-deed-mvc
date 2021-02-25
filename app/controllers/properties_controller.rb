@@ -1,8 +1,8 @@
 class PropertiesController < ApplicationController
 
-  before("/properties/*") do #QUESTION EVERYTHING BUT /PROPERTIES(/:id)
-    redirect_if_not_logged_in if request.path_info != "/login"
-  end
+  # before("/properties/*") do #QUESTION EVERYTHING BUT /PROPERTIES(/:id)
+  #   redirect_if_not_logged_in if request.path_info != "/login"
+  # end
 
   # GET: /properties
   get "/properties" do

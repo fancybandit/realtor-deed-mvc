@@ -1,6 +1,7 @@
-<h1>Property Homepage</h1>
+<h1>Personal Property Homepage</h1>
 <ul>
 <% @properties.each do |property| %>
-    <li><a href="/properties/<%= property.id %>"><%= property.address %></a></li><br>
+    <li><a href="/properties/<%= property.id %>"><%= property.address %></a></li>
+    <br>
 <% end %>
 </ul>
