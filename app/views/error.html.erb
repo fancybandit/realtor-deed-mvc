@@ -1,7 +1,9 @@
-<h1>Sorry, this page doesn't exist!</h1>
-<p>The resource you were looking for either:</p>
-<ul>
-    <li>doesn't exist</li>
-    <li>was removed</li>
-    <li>was moved to another location</li>
-</ul>
+<% if !flash[:error] %>
+    <h1>Sorry, this page doesn't exist!</h1>
+    <p>The resource you were looking for either:</p>
+    <ul>
+        <li>doesn't exist</li>
+        <li>was removed</li>
+        <li>was moved to another location</li>
+    </ul>
+<% end %>
