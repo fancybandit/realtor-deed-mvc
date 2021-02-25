@@ -16,6 +16,7 @@ group :development do
   gem 'pry'
   gem 'tux'
   gem 'faker'
+  gem 'corneal'
 end
 
 group :test do
