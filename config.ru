@@ -7,4 +7,5 @@ end
 use UsersController
 use PropertiesController
 use SessionsController
+use DeedsController
 run ApplicationController
