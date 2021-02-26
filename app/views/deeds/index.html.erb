@@ -1,6 +1,7 @@
 <h1>Deed Library</h1>
 <ul>
 <% @deeds.each do |deed| %>
+<% binding.pry %>
     <li><a href="/deeds/<%= deed.id %>"><%= deed.property.address %></a></li>
     <br>
 <% end %>
