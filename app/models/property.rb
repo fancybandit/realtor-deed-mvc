@@ -7,7 +7,7 @@ class Property < ActiveRecord::Base
 
     validates :address, presence: true, uniqueness: true
     validates :price, presence: :true, numericality: {greater_than_or_equal_to: 0}
-    validates :year_sold, presence: true, numericality: {only_integer: true, less_than_or_equal_to: ->(_property) { Date.current.year }}
+    validates :date_sold, presence: true, numericality: {less_than_or_equal_to: ->(_property) { Date.current }}
     validates :acreage, presence: true, numericality: {greater_than_or_equal_to: 0}
 end
 
