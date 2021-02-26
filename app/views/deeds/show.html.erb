@@ -1,1 +1,18 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1>Deed Info</h1>
+
+<h3>Property address:</h3>
+    <%= @deed.property.address %>
+    <br><br>
+<h3>Signee (Owner of property):</h3>
+    <%= @deed.owner.name %>
+    <br><br>
+<h3>Acreage:</h3>
+    <%= @deed.property.acreage %>
+    <br><br>
+<h3>Date of signature:</h3>
+    <%= @deed.date_signed %>
+    <br><br>
+
+<a href="/deeds/<%= @deed.id %>/edit">
+    <button type="submit" value="Edit">Edit</button>
+</a>
