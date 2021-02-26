@@ -12,24 +12,23 @@ class DeedsController < ApplicationController
     erb :"/deeds/new.html"
   end
 
-  # POST: /deeds
-  post "/deeds" do
-    redirect "/deeds"
-  end
-
   # GET: /deeds/5
   get "/deeds/:id" do
     find_deed
-    if current_user == @deed.owner
-      erb :"/deeds/show.html"
-    else
-      redirect "/deeds"
-    end
+    is_owner_of?(@deed)
+    erb :"/deeds/show.html"
   end
-
+  
   # GET: /deeds/5/edit
   get "/deeds/:id/edit" do
+    find_deed
+    is_owner_of?(@deed)
     erb :"/deeds/edit.html"
+  end
+  
+  # POST: /deeds
+  post "/deeds" do
+    redirect "/deeds"
   end
 
   # PATCH: /deeds/5

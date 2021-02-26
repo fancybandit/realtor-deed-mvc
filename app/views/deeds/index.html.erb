@@ -1,8 +1,13 @@
 <h1>Deed Library</h1>
-<ul>
-<% @deeds.each do |deed| %>
-<% binding.pry %>
-    <li><a href="/deeds/<%= deed.id %>"><%= deed.property.address %></a></li>
+<% if @deeds.any? %>
+    <ul>
+    <% @deeds.each do |deed| %>
+        <li><a href="/deeds/<%= deed.id %>"><%= deed.property.address %></a></li>
+        <br>
+    <% end %>
+    </ul>
+<% else %>
+    <h5>There are no deeds to display</h5>
     <br>
+    <p><u><a href="/properties/new">Record your first property</a></u> to automagically generate a deed with your info!</p>
 <% end %>
-</ul>
