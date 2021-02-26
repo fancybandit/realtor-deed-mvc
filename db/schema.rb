@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_154052) do
   create_table "properties", force: :cascade do |t|
     t.string "address"
     t.integer "price", default: 0
-    t.integer "date_sold"
+    t.date "date_sold"
     t.float "acreage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -3,7 +3,7 @@ class CreateProperties < ActiveRecord::Migration[5.2]
     create_table :properties do |t|
       t.string :address
       t.integer :price, default: 0
-      t.integer :date_sold
+      t.date :date_sold
       t.float :acreage
 
       t.timestamps null: false

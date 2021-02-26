@@ -2,13 +2,18 @@
 <p>Member since: <%= @user.created_at.try(:to_date) %></p>
 <br>
 <h2>Properties:</h2>
-    <ul>
-        <% @user.properties.each do |property| %>
-            <li>
-                <a href="/properties/<%= property.id %>"><%= property.address %></a>
-                <h5>View deed:</h5><a href="/deeds/<%= property.deed.id %>"><%= property.deed.date_signed %></a>
-                <br><br><br>
-            </li>
-        <% end %>
-    </ul>
+    <% if @user.properties.any? %>
+        <ul>
+            <% @user.properties.each do |property| %>
+                <li>
+                    <a href="/properties/<%= property.id %>"><%= property.address %></a>
+                    <h5>View deed:</h5><a href="/deeds/<%= property.deed.id %>"><%= property.deed.date_signed %></a>
+                    <br><br><br>
+                </li>
+            <% end %>
+        </ul>
+    <% else %>
+        <h5>There are no recorded properties to display</h5>
+        <a href="/properties/new">Record your first property</a>
+    <% end %>
 
