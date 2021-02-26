@@ -18,11 +18,8 @@ class PropertiesController < ApplicationController
   # GET: /properties/5
   get "/properties/:id" do
     find_property
-    if current_user == @property.owner
-      erb :"/properties/show.html"
-    else
-      redirect "/properties"
-    end
+    is_owner_of?(@property)
+    erb :"/properties/show.html"
   end
   
   # GET: /properties/5/edit
@@ -46,11 +43,10 @@ class PropertiesController < ApplicationController
 
   # PATCH: /properties/5
   patch "/properties/:id" do
-    binding.pry
     find_property
     is_owner_of?(@property)
     @property.update(params[:property])
-    redirect "/properties/:id"
+    redirect "/properties/#{@property.id}"
   end
 
   # DELETE: /properties/5/delete
