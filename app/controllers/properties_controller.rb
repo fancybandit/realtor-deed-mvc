@@ -23,7 +23,11 @@ class PropertiesController < ApplicationController
   # GET: /properties/5
   get "/properties/:id" do
     find_property #CREATE BEFORE
-    erb :"/properties/show.html"
+    if current_user == @property.owner
+      erb :"/properties/show.html"
+    else
+      redirect "/properties"
+    end
   end
 
   # GET: /properties/5/edit
@@ -49,7 +53,7 @@ class PropertiesController < ApplicationController
   private
 
   def find_property
-    @property = Property.find_by(params[:id])
+    @property = Property.find_by(id: params[:id])
   end
 
 end
