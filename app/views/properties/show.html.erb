@@ -2,14 +2,16 @@
 
 <h3>Price:</h3>
     <%= "$ #{@property.price}" %>
-    <br>
+    <br><br>
 <h3>Date Sold:</h3>
     <%= @property.date_sold %>
-    <br>
+    <br><br>
 <h3>Acreage:</h3>
     <%= @property.acreage %>
-    <br>
+    <br><br>
 
-<a href="/properties/<%= @property.id %>/edit">
-    <button type="submit" value="Edit">Edit</button>
-</a>
+<% if current_user == @property.owner %>
+    <a href="/properties/<%= @property.id %>/edit">
+        <button type="submit" value="Edit">Edit</button>
+    </a>
+<% end %>

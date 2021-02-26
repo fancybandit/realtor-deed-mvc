@@ -1,8 +1,12 @@
 <h1>Personal Property Homepage</h1>
-<ul>
-<% @properties.each do |property| %>
-    <li><a href="/properties/<%= property.id %>"><%= property.address %></a></li>
-    <br>
+<% if @properties.any? %>
+    <ul>
+        <% @properties.each do |property| %>
+            <li><a href="/properties/<%= property.id %>"><%= property.address %></a></li>
+            <br>
+        <% end %>
+    </ul>
+<% else %>
+    <h5>There are no properties to display</h5>
 <% end %>
-</ul>
 <a href="/properties/new">Create New Property</a>

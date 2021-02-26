@@ -15,6 +15,23 @@ class PropertiesController < ApplicationController
     erb :"/properties/new.html"
   end
 
+  # GET: /properties/5
+  get "/properties/:id" do
+    find_property
+    if current_user == @property.owner
+      erb :"/properties/show.html"
+    else
+      redirect "/properties"
+    end
+  end
+  
+  # GET: /properties/5/edit
+  get "/properties/:id/edit" do
+    find_property
+    is_owner_of?(@property)
+    erb :"/properties/edit.html"
+  end
+  
   # POST: /properties
   post "/properties" do
     property = current_user.properties.create(params[:property])
@@ -27,28 +44,12 @@ class PropertiesController < ApplicationController
     end
   end
 
-  # GET: /properties/5
-  get "/properties/:id" do
-    find_property #CREATE BEFORE
-    if current_user == @property.owner
-      erb :"/properties/show.html"
-    else
-      redirect "/properties"
-    end
-  end
-
-  # GET: /properties/5/edit
-  get "/properties/:id/edit" do
-    find_property
-    is_owner_of?(@property)
-    erb :"/properties/edit.html"
-  end
-
   # PATCH: /properties/5
   patch "/properties/:id" do
+    binding.pry
     find_property
     is_owner_of?(@property)
-
+    @property.update(params[:property])
     redirect "/properties/:id"
   end
 
