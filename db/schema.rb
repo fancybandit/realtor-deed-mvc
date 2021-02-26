@@ -10,6 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_02_18_154052) do
+
+  create_table "building_properties", force: :cascade do |t|
+    t.integer "building_id"
+    t.integer "property_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_building_properties_on_building_id"
+    t.index ["property_id"], name: "index_building_properties_on_property_id"
+  end
+
+  create_table "buildings", force: :cascade do |t|
+    t.integer "year_built"
+    t.integer "price", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deeds", force: :cascade do |t|
+    t.integer "owner_id"
+    t.integer "property_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_deeds_on_owner_id"
+    t.index ["property_id"], name: "index_deeds_on_property_id"
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "address"
+    t.integer "price", default: 0
+    t.integer "date_sold"
+    t.float "acreage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
