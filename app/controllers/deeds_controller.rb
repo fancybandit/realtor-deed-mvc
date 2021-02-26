@@ -7,11 +7,6 @@ class DeedsController < ApplicationController
     erb :"/deeds/index.html"
   end
 
-  # GET: /deeds/new
-  get "/deeds/new" do
-    erb :"/deeds/new.html"
-  end
-
   # GET: /deeds/5
   get "/deeds/:id" do
     find_deed
