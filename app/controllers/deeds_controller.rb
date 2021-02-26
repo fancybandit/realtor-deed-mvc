@@ -1,7 +1,9 @@
+
 class DeedsController < ApplicationController
 
   # GET: /deeds
   get "/deeds" do
+    @deeds = current_user.deeds
     erb :"/deeds/index.html"
   end
 
@@ -17,7 +19,12 @@ class DeedsController < ApplicationController
 
   # GET: /deeds/5
   get "/deeds/:id" do
-    erb :"/deeds/show.html"
+    find_deed
+    if current_user == @deed.owner
+      erb :"/deeds/show.html"
+    else
+      redirect "/deeds"
+    end
   end
 
   # GET: /deeds/5/edit
@@ -34,4 +41,12 @@ class DeedsController < ApplicationController
   delete "/deeds/:id/delete" do
     redirect "/deeds"
   end
+
+  private
+
+  def find_deed
+    @deed = Deed.find_by(id: params[:id])
+  end
+
 end
+
