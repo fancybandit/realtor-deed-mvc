@@ -17,7 +17,15 @@ class PropertiesController < ApplicationController
 
   # POST: /properties
   post "/properties" do
-    redirect "/properties"
+    property = current_user.properties.create(params[:property])
+    if property.valid?
+      property.deed.update(date_signed: params[:deed][:date_signed], owner_name: property.owner.name)
+      flash[:success] = "Successfully recorded a new property"
+      redirect "/properties/#{ property.id }"
+    else
+      flash[:error] = property.errors.full_messages.first
+      redirect "/properties/new"
+    end
   end
 
   # GET: /properties/5

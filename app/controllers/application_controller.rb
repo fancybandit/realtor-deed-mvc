@@ -36,7 +36,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def is_owner_of?(obj)
-      if current_user != obj.user
+      if current_user != obj.owner
         flash[:error] = "You don't have permission to view this page!"
         redirect "/properties"
       end
