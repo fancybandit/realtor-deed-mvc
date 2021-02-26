@@ -12,6 +12,10 @@
 
 <% if current_user == @property.owner %>
     <a href="/properties/<%= @property.id %>/edit">
-        <button type="submit" value="Edit">Edit</button>
+        <button type="submit">Edit</button>
     </a>
+    <form action="/properties/<%= @property.id %>" method="post">
+        <input type="hidden" id="hidden" name="_method" value="delete">
+        <button type="submit">Delete</button>
+    </form>
 <% end %>

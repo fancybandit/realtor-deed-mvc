@@ -50,7 +50,10 @@ class PropertiesController < ApplicationController
   end
 
   # DELETE: /properties/5/delete
-  delete "/properties/:id/delete" do
+  delete "/properties/:id" do
+    find_property
+    is_owner_of?(@property)
+    @property.destroy
     redirect "/properties"
   end
 
