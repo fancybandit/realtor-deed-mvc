@@ -1,1 +1,12 @@
-<h1>This is the Model's index page.</h1>
+<h1>Personal Buildings Homepage</h1>
+<% if @buildings.any? %>
+    <ul>
+        <% @buildings.each do |building| %>
+            <li><a href="/buildinges/<%= building.id %>"><%= building.property.address %></a></li>
+            <br>
+        <% end %>
+    </ul>
+<% else %>
+    <h5>There are no buildings to display</h5>
+<% end %>
+<a href="/buildings/new">Create New Building</a>

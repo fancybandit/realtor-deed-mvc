@@ -9,5 +9,5 @@ use UsersController
 use PropertiesController
 use SessionsController
 use DeedsController
-run ApplicationController
 use BuildingsController
+run ApplicationController
