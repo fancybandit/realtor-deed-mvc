@@ -7,7 +7,15 @@ class Property < ActiveRecord::Base
 
     validates :address, presence: true, uniqueness: true
     validates :price, presence: :true, numericality: {greater_than_or_equal_to: 0}
-    validates :date_sold, presence: true, numericality: {less_than_or_equal_to: ->(_property) { Date.current }}
     validates :acreage, presence: true, numericality: {greater_than_or_equal_to: 0}
+    
+    validates :date_sold, presence: true
+    validate :date_sold_cannot_be_in_future
+
+    def date_sold_cannot_be_in_future
+        if date_sold > Date.today
+            errors.add(:date_sold, "can't be in the future")
+        end
+    end
 end
 
