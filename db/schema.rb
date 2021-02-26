@@ -10,22 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_154052) do
-
-  create_table "building_properties", force: :cascade do |t|
-    t.integer "building_id"
-    t.integer "property_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["building_id"], name: "index_building_properties_on_building_id"
-    t.index ["property_id"], name: "index_building_properties_on_property_id"
-  end
+ActiveRecord::Schema.define(version: 2021_02_14_170531) do
 
   create_table "buildings", force: :cascade do |t|
     t.integer "year_built"
     t.integer "price", default: 0
+    t.integer "property_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_buildings_on_property_id"
   end
 
   create_table "deeds", force: :cascade do |t|
