@@ -2,6 +2,7 @@ class BuildingsController < ApplicationController
 
   # GET: /buildings
   get "/buildings" do
+    @properties = current_user.properties
     @buildings = current_user.buildings
     erb :"/buildings/index.html"
   end

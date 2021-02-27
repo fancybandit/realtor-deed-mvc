@@ -1,9 +1,14 @@
 <h1>Personal Buildings Homepage</h1>
 <% if @buildings.any? %>
     <ul>
-        <% @buildings.each do |building| %>
-            <li><a href="/buildinges/<%= building.id %>"><%= building.property.address %></a></li>
-            <br>
+        <% @properties.each do |property| %>
+            <% if property.buildings.any? %>
+                <h4><%= property.address %></h4>
+                <% property.buildings.each do |building| %>
+                    <li><a href="/buildings/<%= building.id %>"><%= building.year_built %></a></li>
+                <% end %>
+                <br>
+            <% end %>
         <% end %>
     </ul>
 <% else %>
