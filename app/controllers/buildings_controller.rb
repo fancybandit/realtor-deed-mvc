@@ -22,6 +22,9 @@ class BuildingsController < ApplicationController
   
   # GET: /buildings/5/edit
   get "/buildings/:id/edit" do
+    find_building
+    is_owner_of?(@building)
+    @properties = current_user.properties
     erb :"/buildings/edit.html"
   end
   
