@@ -7,7 +7,8 @@
             <% @user.properties.each do |property| %>
                 <li>
                     <a href="/properties/<%= property.id %>"><%= property.address %></a>
-                    <h5>View deed:</h5><a href="/deeds/<%= property.deed.id %>"><%= property.deed.date_signed %></a>
+                    <br><br>
+                    <p>View deed: <a href="/deeds/<%= property.deed.id %>"><%= property.date_sold %></a></p>
                     <br><br><br>
                 </li>
             <% end %>
