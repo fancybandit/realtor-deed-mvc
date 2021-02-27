@@ -1,1 +1,21 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1>Building Info:</h1>
+
+<h3>Address:</h3>
+    <%= "$ #{@building.property.address}" %>
+    <br><br>
+<h3>Price:</h3>
+    <%= "$ #{@building.price}" %>
+    <br><br>
+<h3>Year Built:</h3>
+    <%= @building.year_built %>
+    <br><br>
+
+<% if current_user == @building.owner %>
+    <a href="/buildings/<%= @building.id %>/edit">
+        <button type="submit">Edit</button>
+    </a>
+    <form action="/buildings/<%= @building.id %>" method="post">
+        <input type="hidden" id="hidden" name="_method" value="delete">
+        <button type="submit">Delete</button>
+    </form>
+<% end %>

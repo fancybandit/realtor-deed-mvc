@@ -12,10 +12,11 @@ class BuildingsController < ApplicationController
     @properties = current_user.properties
     erb :"/buildings/new.html"
   end
-
   
   # GET: /buildings/5
   get "/buildings/:id" do
+    find_building
+    is_owner_of?(@building)
     erb :"/buildings/show.html"
   end
   
@@ -47,4 +48,11 @@ class BuildingsController < ApplicationController
   delete "/buildings/:id/delete" do
     redirect "/buildings"
   end
+
+  private
+
+  def find_building
+    @building = Building.find_by(id: params[:id])
+  end
+
 end
