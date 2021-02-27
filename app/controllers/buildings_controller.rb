@@ -12,19 +12,29 @@ class BuildingsController < ApplicationController
     erb :"/buildings/new.html"
   end
 
-  # POST: /buildings
-  post "/buildings" do
-    redirect "/buildings"
-  end
-
+  
   # GET: /buildings/5
   get "/buildings/:id" do
     erb :"/buildings/show.html"
   end
-
+  
   # GET: /buildings/5/edit
   get "/buildings/:id/edit" do
     erb :"/buildings/edit.html"
+  end
+  
+  # POST: /buildings
+  post "/buildings" do
+    property = current_user.properties.find_by_id(params[:property][:id])
+    is_owner_of?(property)
+    building = property.buildings.create(params[:building])
+    if building.valid?
+      flash[:success] = "Successfully recorded a new building"
+      redirect "/buildings/#{ building.id }"
+    else
+      flash[:error] = building.errors.full_messages.first
+      redirect "/buildings/new"
+    end
   end
 
   # PATCH: /buildings/5
