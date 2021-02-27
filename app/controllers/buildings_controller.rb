@@ -8,6 +8,7 @@ class BuildingsController < ApplicationController
 
   # GET: /buildings/new
   get "/buildings/new" do
+    @properties = current_user.properties
     erb :"/buildings/new.html"
   end
 
