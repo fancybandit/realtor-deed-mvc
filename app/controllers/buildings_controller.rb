@@ -53,6 +53,9 @@ class BuildingsController < ApplicationController
 
   # DELETE: /buildings/5/delete
   delete "/buildings/:id/delete" do
+    find_building
+    is_owner_of?(@building)
+    @building.destroy
     redirect "/buildings"
   end
 
