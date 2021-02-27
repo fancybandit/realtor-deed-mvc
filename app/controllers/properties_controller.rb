@@ -60,7 +60,11 @@ class PropertiesController < ApplicationController
   private
 
   def find_property
-    @property = Property.find_by(id: params[:id])
+    if Property.exists?(params[:id])
+      @property = Property.find_by(id: params[:id])
+    else
+      redirect "/properties"
+    end
   end
 
 end

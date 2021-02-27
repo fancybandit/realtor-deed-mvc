@@ -1,6 +1,10 @@
 
 class DeedsController < ApplicationController
 
+  before("/deeds") do
+    redirect_if_not_logged_in # if request.path_info != "/login"
+  end
+
   # GET: /deeds
   get "/deeds" do
     @deeds = current_user.deeds
@@ -17,7 +21,11 @@ class DeedsController < ApplicationController
   private
 
   def find_deed
-    @deed = Deed.find_by(id: params[:id])
+    if Deed.exists?(params[:id])
+      @deed = Deed.find_by(id: params[:id])
+    else
+      redirect "/deeds"
+    end
   end
 
 end
