@@ -12,3 +12,6 @@
 <h3>Date of signature:</h3>
     <%= @deed.property.date_sold %>
     <br><br>
+<a href="/properties/<%= @deed.property.id %>">
+    <button type="submit">View Property</button>
+</a>

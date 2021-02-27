@@ -8,7 +8,7 @@
     <br><br>
 <h3>Acreage:</h3>
     <%= @property.acreage %>
-    <br><br>
+    <br><br><br>
 
 <% if current_user == @property.owner %>
     <a href="/properties/<%= @property.id %>/edit">
@@ -17,6 +17,7 @@
     <a href="/deeds/<%= @property.deed.id %>">
         <button type="submit">View Deed</button>
     </a>
+    <br><br>
     <form action="/properties/<%= @property.id %>" method="post">
         <input type="hidden" id="hidden" name="_method" value="delete">
         <button type="submit">Delete</button>
