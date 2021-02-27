@@ -44,7 +44,11 @@ class BuildingsController < ApplicationController
 
   # PATCH: /buildings/5
   patch "/buildings/:id" do
-    redirect "/buildings/:id"
+    find_building
+    is_owner_of?(@building)
+    @building.update(params[:building])
+    @building.update(property_id: params[:property][:id])
+    redirect "/buildings/#{@building.id}"
   end
 
   # DELETE: /buildings/5/delete
