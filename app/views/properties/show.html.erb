@@ -11,13 +11,16 @@
     <br><br><br>
 
 <% if current_user == @property.owner %>
-    <a href="/properties/<%= @property.id %>/edit">
-        <button type="submit">Edit</button>
-    </a>
     <a href="/deeds/<%= @property.deed.id %>">
         <button type="submit">View Deed</button>
     </a>
+    <a href="/buildings">
+        <button type="submit">View Building(s)</button>
+    </a>
     <br><br>
+    <a href="/properties/<%= @property.id %>/edit">
+        <button type="submit">Edit</button>
+    </a>
     <form action="/properties/<%= @property.id %>" method="post">
         <input type="hidden" id="hidden" name="_method" value="delete">
         <button type="submit">Delete</button>
