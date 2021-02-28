@@ -1,1 +1,11 @@
-<h1>This is the Model's index page.</h1>
+<h1>All Users</h1>
+<% if @users.any? %>
+    <ul>
+        <% @users.each do |user| %>
+            <li><a href="/users/<%= user.id %>"><%= user.name %></a><p>Member since: <%= user.created_at.try(:to_date) %></p></li>
+            <br>
+        <% end %>
+    </ul>
+<% else %>
+    <h5>There are no users to display</h5>
+<% end %>

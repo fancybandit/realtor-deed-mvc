@@ -52,7 +52,7 @@ class BuildingsController < ApplicationController
   end
 
   # DELETE: /buildings/5/delete
-  delete "/buildings/:id/delete" do
+  delete "/buildings/:id" do
     find_building
     is_owner_of?(@building)
     @building.destroy
