@@ -2,7 +2,7 @@
 <% if @users.any? %>
     <ul>
         <% @users.each do |user| %>
-            <li><a href="/users/<%= user.id %>"><%= user.name %></a><p>Member since: <%= user.created_at.try(:to_date) %></p></li>
+            <li><a href="/users/<%= user.slug %>"><%= user.name %></a><p>Member since: <%= user.created_at.try(:to_date) %></p></li>
             <br>
         <% end %>
     </ul>
