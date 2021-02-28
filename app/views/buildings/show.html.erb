@@ -1,7 +1,7 @@
 <h1>Building Info:</h1>
 
 <h3>Address:</h3>
-    <%= "$ #{@building.property.address}" %>
+    <%= @building.property.address %>
     <br><br>
 <h3>Price:</h3>
     <%= "$ #{@building.price}" %>
@@ -11,6 +11,10 @@
     <br><br>
 
 <% if current_user == @building.owner %>
+    <a href="/properties/<%= @building.property.id %>">
+        <button type="submit">View Property</button>
+    </a>
+    <br><br>
     <a href="/buildings/<%= @building.id %>/edit">
         <button type="submit">Edit</button>
     </a>
