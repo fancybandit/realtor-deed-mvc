@@ -13,10 +13,10 @@ User.all.each do |user|
     3.times do
         address = Faker::Address.unique.full_address
         price = Faker::Number.between(from: 1000, to: 12000000)
-        year_sold = Faker::Number.between(from: 1911, to: Date.current.year)
+        date_sold = Faker::Date.between(from: '1911-01-01', to: Date.current)
         acreage = Faker::Number.between(from: 0.01, to: 369.00).round(2)
 
-        user.properties.create(address: address, price: price, year_sold: year_sold, acreage: acreage)
+        user.properties.create(address: address, price: price, date_sold: date_sold, acreage: acreage)
     end
 end
 
@@ -26,9 +26,4 @@ Property.all.each do |property|
     price = Faker::Number.between(from: 1000, to: 12000000)
 
     property.buildings.create(year_built: year_built, price: price)
-end
-
-# Fill in extra data for each deed
-Deed.all.each do |deed|
-    deed.update(owner_name: deed.owner.name, date_signed: "2020-01-31")
 end
