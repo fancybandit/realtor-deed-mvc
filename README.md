@@ -37,13 +37,13 @@ In the project's terminal, type (in order):
     `rake db:seed' > OPTIONAL: Fills the database with dummy data to provide a more immersive experience
     `shotgun' > Starts the server on your local machine
 
-After running 'shotugn', take note of the port displayed in the terminal (usually 9393), then in your browser, go to "localhost:<PORT>"
+After running 'shotugn', take note of the port displayed in the terminal (usually 9393), then in your browser, go to "localhost:(PORT)"
 
 ## Built With
-
+  - [Corneal](https://github.com/thebrianemory/corneal) - Used to create scaffolding for some models, views, & controllers
   - [Contributor Covenant](https://www.contributor-covenant.org/) - Used
-    for the Code of Conduct
-  - [Creative Commons](https://creativecommons.org/) - Used to choose
+    for Contributing section of README
+  - [MIT License](LICENSE) - Used to choose
     the license
 
 ## Contributing
