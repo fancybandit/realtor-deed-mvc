@@ -46,17 +46,27 @@ class BuildingsController < ApplicationController
   patch "/buildings/:id" do
     find_building
     is_owner_of?(@building)
-    @building.update(params[:building])
-    @building.update(property_id: params[:property][:id])
-    redirect "/buildings/#{@building.id}"
+    if @building.update(year_built: params[:building][:year_built], price: params[:building][:price], property_id: params[:property][:id])
+      redirect "/buildings/#{@building.id}"
+      flash[:success] = "Successfully updated existing building"
+      redirect "/buildings/#{ @building.id }"
+    else
+      flash[:error] = @building.errors.full_messages.first
+      redirect "/buildings/#{@building.id}/edit"
+    end
   end
 
   # DELETE: /buildings/5/delete
   delete "/buildings/:id" do
     find_building
     is_owner_of?(@building)
-    @building.destroy
-    redirect "/buildings"
+    if @building.destroy
+      flash[:success] = "Successfully deleted existing building"
+      redirect "/buildings"
+    else
+      flash[:error] = @building.errors.full_messages.first
+      redirect "/buildings/#{@building.id}/edit"
+    end
   end
 
   private
