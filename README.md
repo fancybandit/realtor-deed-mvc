@@ -30,14 +30,29 @@ Copy the SSH link, then in the desired directory, type:
 
 then, cd into the directory and open the project in your text editor/development environment.
 
-In the project's terminal, type (in order):
+In the project's terminal, type:
 
     `bundle' > Installs necessary libraries/dependencies
-    `rake db:migrate' > Sets up database
+
+Now, create a session_secret in order to ensure all users' passwords are safe from exploitation:
+In the project's main directory, in the terminal, type (in order):
+
+    `touch .env'
+    `ruby -e "require 'securerandom'; puts SecureRandom.hex(40)"'
+
+Copy the long string of random characters, then open the .env file and type:
+
+    `SESSION_SECRET = <INSERT CHARACTERS HERE>'
+
+Now, all of your user passwords will be secure.
+
+In the project's terminal, type (in order):
+
+    `rake db:migrate' > Sets up the database & necessary tables
     `rake db:seed' > OPTIONAL: Fills the database with dummy data to provide a more immersive experience
     `shotgun' > Starts the server on your local machine
 
-After running 'shotugn', take note of the port displayed in the terminal (usually 9393), then in your browser, go to "localhost:(PORT)"
+After running 'shotgun', take note of the port displayed in the terminal (usually 9393), then in your browser, go to "localhost:(PORT)"
 
 ## Built With
   - [Corneal](https://github.com/thebrianemory/corneal) - Used to create scaffolding for some models, views, & controllers
