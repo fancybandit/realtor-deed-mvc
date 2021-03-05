@@ -61,6 +61,15 @@ class UsersController < ApplicationController
 
   # DELETE: /users/5/delete
   delete "/users/:slug/delete" do
-    redirect "/users"
+    user = User.find_by_slug(params[:slug])
+    if current_user == user
+      if user.destroy
+        flash[:success] = "Successfully deleted account"
+        redirect "/login"
+      else
+        flash[:error] = user.errors.full_messages.first
+        redirect "/users/#{user.slug}"
+      end
+    end
   end
 end
