@@ -47,9 +47,8 @@ class BuildingsController < ApplicationController
     find_building
     is_owner_of?(@building)
     if @building.update(year_built: params[:building][:year_built], price: params[:building][:price], property_id: params[:property][:id])
-      redirect "/buildings/#{@building.id}"
       flash[:success] = "Successfully updated existing building"
-      redirect "/buildings/#{ @building.id }"
+      redirect "/buildings/#{@building.id}"
     else
       flash[:error] = @building.errors.full_messages.first
       redirect "/buildings/#{@building.id}/edit"
