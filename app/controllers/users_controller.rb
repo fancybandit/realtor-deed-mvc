@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   end
 
   # DELETE: /users/5/delete
-  delete "/users/:slug/delete" do
+  delete "/users/:slug" do
     user = User.find_by_slug(params[:slug])
     if current_user == user
       if user.destroy
