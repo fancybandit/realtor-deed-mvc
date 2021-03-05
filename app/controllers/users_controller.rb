@@ -45,8 +45,17 @@ class UsersController < ApplicationController
   end
 
   # PATCH: /users/5
-  patch "/users/:id" do
-    redirect "/users/:id"
+  patch "/users/:slug" do
+    user = User.find_by_slug(params[:slug])
+    if current_user == user
+      if user.update(params[:user])
+        flash[:success] = "Successfully updated your account"
+        redirect "/users/#{user.slug}"
+      else
+        flash[:error] = user.errors.full_messages.first
+        redirect "/users/#{user.slug}/edit"
+      end
+    end
   end
 
   # DELETE: /users/5/delete

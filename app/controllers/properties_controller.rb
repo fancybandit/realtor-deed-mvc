@@ -1,9 +1,5 @@
 class PropertiesController < ApplicationController
 
-  before("/properties") do
-    redirect_if_not_logged_in # if request.path_info != "/login"
-  end
-
   get "/properties" do
     @properties = current_user.properties
     erb :"/properties/index.html"

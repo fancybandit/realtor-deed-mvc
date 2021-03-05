@@ -9,6 +9,10 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash
   end
 
+  before("*") do
+    redirect_if_not_logged_in if request.path_info != "/login"
+  end
+
   get "/" do
     erb :"index.html"
   end

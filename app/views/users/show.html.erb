@@ -1,6 +1,12 @@
 <h1><%= @user.name %></h1>
 <p>Member since: <%= @user.created_at.try(:to_date) %></p>
 <br>
+<% if current_user == @user %>
+<a href="/users/<%= @user.slug %>/edit">
+    <button type="submit">Edit Account</button>
+</a>
+<% end %>
+<br><br>
 <h2>Properties:</h2>
     <% if @user.properties.any? %>
         <ul>
