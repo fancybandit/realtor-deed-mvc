@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   # GET: /users/5/edit
   get "/users/:slug/edit" do
     redirect_if_not_logged_in
+    @user = current_user
     erb :"/users/edit.html"
   end
   
