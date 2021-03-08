@@ -1,19 +1,16 @@
 
 class SessionsController < ApplicationController
 
-  # GET: /sessions
   get "/login" do
     redirect "/users/#{current_user.slug}" if logged_in?
     erb :"/sessions/login.html"
   end
 
-  # GET: /sessions/new
   get "/logout" do
     session.clear
     redirect "/"
   end
 
-  # POST: /sessions
   post "/login" do
     user = User.find_by_email(params[:user][:email])
     if user && user.authenticate(params[:user][:password])

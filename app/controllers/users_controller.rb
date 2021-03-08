@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET: /users/new
   get "/signup" do
     if logged_in?
       redirect "/users/#{current_user.slug}"
@@ -31,8 +30,7 @@ class UsersController < ApplicationController
     is_current_user?(@user)
     erb :"/users/edit.html"
   end
-  
-  # POST: /users
+
   post "/signup" do
     user = User.create(params[:user])
     if user.valid?
