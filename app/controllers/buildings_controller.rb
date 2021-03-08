@@ -1,6 +1,12 @@
 
 class BuildingsController < ApplicationController
 
+  ['/buildings', "/buildings/*"].each do |path|
+    before path do
+      redirect_if_not_logged_in
+    end
+  end
+
   get "/buildings" do
     @properties = current_user.properties
     @buildings = current_user.buildings

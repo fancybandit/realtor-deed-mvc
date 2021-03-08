@@ -1,6 +1,12 @@
 
 class PropertiesController < ApplicationController
 
+  ['/properties', "/properties/*"].each do |path|
+    before path do
+      redirect_if_not_logged_in
+    end
+  end
+
   get "/properties" do
     @properties = current_user.properties
     erb :"/properties/index.html"

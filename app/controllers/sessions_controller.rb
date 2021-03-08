@@ -1,6 +1,10 @@
 
 class SessionsController < ApplicationController
 
+  before("/logout") do
+    redirect_if_not_logged_in
+  end
+
   get "/login" do
     redirect "/users/#{current_user.slug}" if logged_in?
     erb :"/sessions/login.html"

@@ -1,6 +1,12 @@
 
 class UsersController < ApplicationController
 
+  ['/users', "/users/*"].each do |path|
+    before path do
+      redirect_if_not_logged_in
+    end
+  end
+
   get "/users" do
     @users = User.all
     erb :"/users/index.html"

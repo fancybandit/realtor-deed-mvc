@@ -1,6 +1,12 @@
 
 class DeedsController < ApplicationController
 
+  ['/deeds', "/deeds/*"].each do |path|
+    before path do
+      redirect_if_not_logged_in
+    end
+  end
+
   get "/deeds" do
     @deeds = current_user.deeds
     erb :"/deeds/index.html"
