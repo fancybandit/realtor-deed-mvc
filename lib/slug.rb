@@ -1,6 +1,5 @@
 
 module Slug
-
     def slug
         self.username.gsub(/[^0-9A-Za-z ]/, '').downcase.split(' ').join('-')
     end
@@ -10,6 +9,5 @@ module Slug
             obj.slug == slug
         end
     end
-
 end
 

@@ -1,4 +1,4 @@
- #QUESTION IF NECESSARY
+
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -45,7 +45,7 @@ class ApplicationController < Sinatra::Base
         redirect "/properties"
       end
     end
-
   end
 
 end
+

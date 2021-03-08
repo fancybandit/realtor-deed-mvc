@@ -1,17 +1,11 @@
 
 class DeedsController < ApplicationController
 
-  before("/deeds") do
-    redirect_if_not_logged_in # if request.path_info != "/login"
-  end
-
-  # GET: /deeds
   get "/deeds" do
     @deeds = current_user.deeds
     erb :"/deeds/index.html"
   end
 
-  # GET: /deeds/5
   get "/deeds/:id" do
     find_deed
     is_owner_of?(@deed)

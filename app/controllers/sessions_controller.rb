@@ -1,3 +1,4 @@
+
 class SessionsController < ApplicationController
 
   # GET: /sessions
@@ -24,4 +25,6 @@ class SessionsController < ApplicationController
       redirect "/login"
     end
   end
+
 end
+

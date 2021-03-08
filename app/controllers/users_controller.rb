@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
 
   get "/users" do
@@ -5,7 +6,6 @@ class UsersController < ApplicationController
     erb :"/users/index.html"
   end
 
-  # GET: /users/5
   get "/users/:slug" do
     @user = User.find_by_slug(params[:slug])
     if @user
@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET: /users/5/edit
   get "/users/:slug/edit" do
     redirect_if_not_logged_in
     @user = User.find_by_slug(params[:slug])
@@ -46,7 +45,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH: /users/5
   patch "/users/:slug" do
     user = User.find_by_slug(params[:slug])
     is_current_user?(user)
@@ -59,7 +57,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE: /users/5/delete
   delete "/users/:slug" do
     user = User.find_by_slug(params[:slug])
     is_current_user?(user)
@@ -80,4 +77,5 @@ class UsersController < ApplicationController
       redirect "/users"
     end
   end
+
 end
