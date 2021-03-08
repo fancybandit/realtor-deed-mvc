@@ -1,5 +1,7 @@
 # realtor-deed-mvc
-Basic Sinatra MVC app for homeowners to keep track of their real estate
+Basic Sinatra MVC app for homeowners to keep track of their real estate.
+
+The goal of this application is to provide homeowners or real estate agents with a simple-to-navigate interface for keeping records of their properties, deeds, & buildings. Personal property, deed, & building info is confidential and secure from peering eyes for fraud protection. One is able to view other user's basic account information such as their name, join date, & addresses belonging to them, in case they wish to find contact information through an external resource for purchasing inquiries. RealtorDeed prioritizes a simple, user-friendly interface alongside personal information security, so that you may keep your tasks short, and your schedule open.
 
 ## Summary
 
