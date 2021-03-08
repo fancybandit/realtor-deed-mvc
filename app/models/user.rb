@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
     has_many :properties, through: :deeds, dependent: :destroy
     has_many :buildings, through: :properties, dependent: :destroy
 
-    has_secure_password #password(=), authenticate, password_confirmation
+    has_secure_password
     validates :password, presence: :true, length: {minimum: 6, too_short: "A password must be at least %{count} characters long"}, confirmation: true, on: :update
 
     validates :username, presence: :true, uniqueness: true, exclusion: {in: ["admin", "superadmin", "user"]}
