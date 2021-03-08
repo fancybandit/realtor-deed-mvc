@@ -65,7 +65,11 @@ class BuildingsController < ApplicationController
   private
 
   def find_building
-    @building = Building.find_by(id: params[:id])
+    if Building.exists?(params[:id])
+      @building = Building.find_by(id: params[:id])
+    else
+      redirect "/buildings"
+    end
   end
 
 end
